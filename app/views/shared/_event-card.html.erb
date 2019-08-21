@@ -9,7 +9,7 @@
           
         	<h5 class="card-title"><%= event.title %><% if event.participate?(current_user) %> <span class="badge badge-secondary bg-success">Je participe !</span><% end %><% if event.admin == current_user %> <span class="badge badge-secondary bg-danger">Admin</span><% end %></h5>
         	<p class="card-text"><%= event.short_description %></p>
-        	<p class="card-text">Le : <%= event.convert_start_date %></p>
+        	<p class="card-text">Le : <%= event.convert(event.start_date) %></p>
           <%= render 'shared/price', event: event %>
           <%= render 'shared/date', event: event %>
       	<p class="card-text"><i class="fas fa-map-marker-alt text-warning"></i> <%= event.location %></p>

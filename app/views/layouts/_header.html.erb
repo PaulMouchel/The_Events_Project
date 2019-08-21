@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <%= link_to "The Events Project", events_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    	<span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mr-auto">
+          	<li class="nav-item active">
+            	<%= link_to "Accueil", events_path, class: "nav-link" %>
+          	</li>
+          	<li class="nav-item">
+            	<%= link_to "Créer un nouvel évenement", new_event_path, class: "nav-link" %>
+          	</li>
+          	<li class="nav-item dropdown">
+            	<% if !user_signed_in? %>
+              		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                		S'inscrire / Se connecter
+              		</a>
+              		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	                	<%= link_to "S'inscrire", new_user_registration_path, class: "dropdown-item" %>
+	                	<%= link_to "Se connecter", new_user_session_path, class: "dropdown-item" %>
+	              	</div>
+            	<% else %>
+              		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                		Mon profil
+              		</a>
+              		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                		<%= link_to "Mon profil", user_path(current_user), class: "dropdown-item" %>
+                		<%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              		</div>
+            	<% end %>
+          	</li>
+          	<% if current_user != nil %>
+            	<% if current_user.is_admin %>
+              		<li class="nav-item">
+                		<%= link_to "Dashboard Admin", admin_index_path, class: "nav-link" %>
+              		</li>
+            	<% end %>
+          	<% end %>
+        </ul>
+    </div>
+</nav>

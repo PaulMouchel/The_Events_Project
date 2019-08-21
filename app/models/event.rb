@@ -25,7 +25,10 @@ class Event < ApplicationRecord
   has_one_attached :event_pic
 
   def end_date
-    date = self.start_date + self.duration*60
+    return self.start_date + self.duration*60
+  end
+
+  def convert(date)
     return date.strftime("%d/%m/%y à %H:%M")
   end
 
@@ -40,10 +43,6 @@ class Event < ApplicationRecord
     else
       return self.description[0..80] + "..."
     end
-  end
-
-  def convert_start_date
-    return self.start_date.strftime("%d/%m/%y à %H:%M")
   end
 
   def can_participate?(user)

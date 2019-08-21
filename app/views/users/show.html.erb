@@ -1,43 +1,4 @@
-<br>
-<section class="card-events">
-  <h2>Mes infos</h2>
-  <div class="row">
-    <div class="col">
-
-    <%if @user.user_pic.attached?%>
-              <%= image_tag @user.user_pic.variant(resize: "350x350"), alt: 'event_pic', class:"w-25 z-depth-1-halfavatar-pic" %>
-    <%end%>
-
-    <p>
-      <strong>Email:</strong>
-      <%= @user.email %>
-    </p>
-
-    <p>
-      <strong>Description:</strong>
-      <%= @user.description %>
-    </p>
-
-    <p>
-      <strong>Prénom:</strong>
-      <%= @user.first_name %>
-    </p>
-
-    <p>
-      <strong>Nom:</strong>
-      <%= @user.last_name %>
-    </p>
-
-    <%= link_to 'Editer', edit_user_path(@user) %> |
-
-
-      <%= link_to "Editer email / password", edit_user_registration_path %>
-
-
-  </div>
-  </div>
-</section>
-<br>
+<%= render 'user_card', user: @user %>
 
 <section class="card-events">
   <h2>Mes évenements</h2>

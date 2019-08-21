@@ -1,31 +1,3 @@
-<h5 class="card-title">
-  <strong><%= event.title %><% if event.participate?(current_user) %> <span class="badge badge-secondary bg-success">Je participe !</span><% end %>
-    <% if event.admin == current_user %> <span class="badge badge-secondary bg-danger">Admin</span><% end %>
-  </strong>
-</h5>
-
-<%if event.event_pic.attached?%>
-  <%= image_tag event.event_pic, alt: 'event_pic', class:"w-100", style:"height: 30vw; object-fit: cover;" %>
-<%end%>
-
-<p><i class="fas fa-map-marker-alt text-warning"></i>  <%= event.location %></p>
-<p>
-<%if event.admin.user_pic.attached?%>
-  <%= image_tag event.admin.user_pic.variant(resize: "50x50"), alt: 'event_pic', class:"w-5 rounded-circle z-depth-1-halfavatar-pic" %>
-<%end%> 
-Créé par <em><%= event.admin.name %></em> <%= event.admin.email %> </p>
-<p><%= event.participants.count %> personnes participent à cet évenement </p>
-<p>
-  début : <%= event.convert_start_date %>
-</p>
-<p>
-  fin : <%= event.end_date %>
-</p>
-
-<%= render 'shared/price', event: event %>
-<%= render 'shared/date', event: event %>
-
-<div class="container bg-light border border-info rounded">
-  <p><strong>Description:</strong></p>
-  <p><%= event.description %></p>
-</div>
+<%= render 'show_img', event: @event %>
+<%= render 'show_icons', event: @event %>
+<%= render 'show_desc', event: @event %>

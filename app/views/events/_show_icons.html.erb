@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-8 p-0 border-left">
+        <div class="d-flex flex-row justify-content-between w-100 ">
+          	<div class="social">
+            	<a href="#"><i class="p-3 fas fa-arrow-up fa-2x"></i></a>
+            	<a href="#"><i class="p-3 far fa-heart fa-2x"></i></a>
+          	</div>
+        </div>
+    </div>
+    <div class="col-4 p-2 border-right">
+        <div class="w-100 d-flex flex-row justify-content-center">
+
+          	<% if event.can_participate?(current_user) &&  !event.is_free?%>
+              	<%= link_to 'Je participe !', new_event_attendance_path(event), class:"w-100 m-2 p-2 btn btn-success" %>
+            <% end %>
+            <% if event.can_participate?(current_user) &&  event.is_free?%>
+              	<%= link_to 'Je participe !', event_attendances_path(event), method: :post, class:"w-100 m-2 p-2 btn btn-success" %>
+            <% end %>
+            <% if event.admin == current_user %>
+              	<%= link_to 'mon espace événement', event_attendances_path(event), class:"w-100 m-2 p-2 btn btn-primary" %>
+            <% end %>
+
+
+        </div>
+    </div>
+</div>

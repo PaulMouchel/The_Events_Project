@@ -1,28 +1,4 @@
-
-<div class="jumbotron" style="background-image: url(https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?cs=srgb&dl=audience-band-concert-1105666.jpg&fm=jpg); background-size: 100%;">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-        <section class="card frame">
-          <div class="card-body">
-
-            <%= render 'shared/event_detailled', event: @event %>
-
-            <% if @event.can_participate?(current_user) &&  !@event.is_free?%>
-              <p><%= link_to 'Je participe !', new_event_attendance_path(@event), class:"btn btn-success float-right mt-1" %></p>
-            <% end %>
-            <% if @event.can_participate?(current_user) &&  @event.is_free?%>
-              <p><%= link_to 'Je participe !', event_attendances_path(@event), method: :post, class:"btn btn-success float-right mt-1" %></p>
-            <% end %>
-            <% if @event.admin == current_user %>
-              <p><%= link_to 'mon espace événement', event_attendances_path(@event), class:"btn btn-primary float-right mt-1" %></p>
-            <% end %>
-
-            <%= link_to 'Retour', events_path %>
-
-          </div>
-        </section>
-      </div>
-    </div>
-  </div>
+<div class="container mt-3">
+    <%= render 'show_event', event: @event %>
+    <%= link_to 'Retour', events_path %>
 </div>

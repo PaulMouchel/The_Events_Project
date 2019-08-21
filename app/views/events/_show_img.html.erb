@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-8 border p-0">
+    	<%if event.event_pic.attached?%>
+		  	<%= image_tag event.event_pic, alt: 'event_pic', class:"w-100" %>
+		<%end%>
+    </div>
+    <div class="col-4 border">
+        <div class="d-flex flex-column justify-content-start h-100">
+          	<div class="d-flex flex-row justify-content-between">
+            	<p class="text-center pt-2"><small><%= event.get_month %></small><br><%= event.start_date.day %></p>
+            	<p class="text-center pt-2"><i class="fas fa-users mr-1"></i><small><%= event.participants.count %></small></p>
+          	</div>
+          	<div>
+            	<h3>« <%= event.title %> »</h3>
+            	<h5 class="card-title">
+				  	<strong>
+				  		<% if event.participate?(current_user) %>
+				  			<span class="badge badge-secondary bg-success">Je participe !</span>
+				  		<% end %>
+				    	<% if event.admin == current_user %>
+				    		<span class="badge badge-secondary bg-danger">Admin</span>
+				    	<% end %>
+				  	</strong>
+				</h5>
+            	<p>
+            		<%if event.admin.user_pic.attached?%>
+					  <%= image_tag event.admin.user_pic.variant(resize: "50x50"), alt: 'event_pic', class:"w-5 rounded-circle z-depth-1-halfavatar-pic" %>
+					<%end%> 
+            		Par <%= event.admin.name %> <%= event.admin.email %>
+            	</p>
+          	</div>
+        	<h5 class="mt-auto p-2">
+        		<% if event.is_free? %>
+        			<span class="badge badge-success">Gratuit</span>
+        		<% else %>
+        			<span class="badge badge-primary"><%= event.price %>€</span>
+        		<% end %>	
+        	</h5>
+    	</div>      
+	</div>
+</div>
+
+
+
+    
+
+  
+  

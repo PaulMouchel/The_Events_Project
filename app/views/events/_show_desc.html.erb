@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-8 border text-center pl-5 pr-5">
+        <h5 class="m-5">Description</h5>
+        <p class="m-5"><%= event.description %></p>
+    </div>
+    <div class="col-4 border-right border-top border-bottom p-3">
+        <h5>Date Et Heure</h5>
+        <% if event.start_date.year ==  event.end_date.year && event.start_date.day ==  event.end_date.day %>
+        	<p><%= event.start_date.strftime("%a %-d %B %Y")%><br><%= event.start_date.strftime("%H:%M")%> - <%= event.end_date.strftime("%H:%M")%></p>
+        <% else %>
+        	<p><%= event.start_date.strftime("%a %-d %B %Y %H:%M")%> -<br><%= event.end_date.strftime("%a %-d %B %Y %H:%M")%></p>
+        <% end %>
+        <hr>
+        <h5>Adresse</h5>
+        <p><i class="fas fa-map-marker-alt text-warning"></i>  <%= event.location %></p>
+    </div>
+</div>
+
+
+
+  
+  
