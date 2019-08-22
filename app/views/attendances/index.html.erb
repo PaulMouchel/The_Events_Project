@@ -1,49 +1,25 @@
-
-<div class="jumbotron" style="background-image: url(https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?cs=srgb&dl=audience-band-concert-1105666.jpg&fm=jpg); background-size: 100%;">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-        <section class="card frame">
-          <div class="card-body">
-
-            <%= render 'shared/event_detailled', event: @event %>
-
-            <%= link_to "Modifier l'évènement", edit_event_path(@event), class:"btn btn-primary mt-1" %> 
-            <%= link_to "Supprimer l'évènement", @event, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger mt-1" %>
-            <%= link_to 'Retour', event_path(@event) %>
+<div class="container mt-3">
+	<div class="row">
+	    <div class="col-md-10 offset-md-1 bg-white">
+	        <%= render 'events/show_img', event: @event %>
+			<%= render 'events/show_desc', event: @event %>
+	    </div>
+	</div>
 
 
-            <div class="container text-center">
-	<h1>Participants</h1>
-	<table class="table">
-	  <thead class="thead-light">
-	    <tr>
-	      <th scope="col">#</th>
-	      <th scope="col">Prénom</th>
-	      <th scope="col">Nom</th>
-	      <th scope="col">email</th>
-	    </tr>
-	  </thead>
-	  <tbody>
-	  	<% @event.participants.each_with_index do |participant, index| %>
-	    <tr>
-	      <th scope="row"><%= index+1 %></th>
-	      <td><%= participant.first_name %></td>
-	      <td><%= participant.last_name %></td>
-	      <td><%= participant.email %></td>
-	    </tr>
-	    <% end %>
-	  </tbody>
-	</table>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 offset-md-1">
+			   	<div class="d-flex flex-row justify-content-between">
+				    <%= link_to 'Retour', event_path(@event), class:"btn btn-link" %>
+				    <div>
+					    <%= link_to "Modifier l'évènement", edit_event_path(@event), class:"btn btn-primary mt-1" %> 
+					    <%= link_to "Supprimer l'évènement", @event, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger mt-1" %>
+					</div>
+				</div>
+				<%= render 'participants_list', event: @event %>
+			</div>
+		</div>
+	</div>
+    
 </div>
-
-
-
-          </div>
-        </section>
-      </div>
-    </div>
-  </div>
-</div>
-
-

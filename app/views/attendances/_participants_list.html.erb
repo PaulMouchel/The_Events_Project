@@ -1,0 +1,6 @@
+<div class="container text-center">
+	<h1>Participants</h1>
+	<% event.participants.each_with_index do |participant, index| %>
+	  	<%= render 'participant_card', participant: participant %>
+	<% end %>
+</div>

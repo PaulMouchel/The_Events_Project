@@ -1,4 +1,8 @@
 <div class="container mt-3">
     <%= render 'show_event', event: @event %>
-    <%= link_to 'Retour', events_path %>
+    <div class="row">
+		<div class="col-md-10 offset-md-1">
+    		<%= link_to 'Retour', events_path, class:"btn btn-link" %>
+		</div>
+	</div>
 </div>
