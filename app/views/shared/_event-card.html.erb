@@ -13,9 +13,12 @@
           	<%= render 'shared/date', event: event %>
       		<p class="card-text"><i class="fas fa-map-marker-alt text-warning"></i> <%= event.location %></p>
         	<% if @is_admin %>
-        		<%= link_to 'Show', admin_event_path(event), class:"btn btn-info" %>
-        		<%= link_to 'Edit event', edit_admin_event_path(event), class:"btn btn-primary" %>
-        		<%= link_to 'Destroy event', admin_event_path(event), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+        		<%= link_to 'Show', admin_event_path(event), class:"btn btn-info mb-1" %>
+        		<%= link_to 'Edit event', edit_admin_event_path(event), class:"btn btn-primary mb-1" %>
+        		<%= link_to 'Destroy event', admin_event_path(event), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger mb-1" %>
+        		<% if attendance %>
+        			<%= link_to 'Destroy attendance', admin_event_attendance_path(event, event.attendances.find_by(participant: @user)), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+        		<% end %>
         	<% else %>
         		<%= link_to "", event_path(event), class:"stretched-link" %>
             <% end %>

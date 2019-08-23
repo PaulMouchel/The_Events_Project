@@ -1,34 +1,28 @@
 <% if @event.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
-
-            <ul>
+    <div id="error_explanation">
+        <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+        <ul>
             <% @event.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
+            	<li><%= message %></li>
             <% end %>
-            </ul>
-          </div>
-        <% end %>
-<div class="jumbotron" style="background-image: url(https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?cs=srgb&dl=audience-band-concert-1105666.jpg&fm=jpg); background-size: 100%;">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-        <section class="card frame">
-          <div class="card-body">
-
-            <%= render 'shared/event_detailled', event: @event %>
-
-
-
-              <p><%= button_to 'Valider', admin_events_submission_path(@event), method: :put, class:"btn btn-success float-right mt-1" %></p>
-              <p><%= link_to 'Refuser', admin_events_submission_path(@event), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger float-right mt-1" %></p>
-
-
-            <%= link_to 'Retour', admin_events_submissions_path %>
-
-          </div>
-        </section>
-      </div>
+        </ul>
     </div>
-  </div>
+<% end %>
+
+<div class="container mt-3">
+  	<div class="row">
+    	<div class="col-md-10 offset-md-1 bg-white">
+        	<%= render 'events/show_img', event: @event %>
+			<%= render 'events/show_desc', event: @event %>
+   		</div>
+	</div>
+    <div class="row">
+      	<div class="col-md-10 offset-md-1">
+            <p><%= button_to 'Valider', admin_events_submission_path(@event), method: :put, class:"btn btn-success float-right mt-1" %></p>
+            <p><%= link_to 'Refuser', admin_events_submission_path(@event), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger float-right mt-1" %></p>
+            <%= link_to 'Retour', admin_events_submissions_path %>
+      	</div>
+    </div>
 </div>
+
+
