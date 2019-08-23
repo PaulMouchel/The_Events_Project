@@ -1,4 +1,4 @@
-class Admin::AttendancesController < ApplicationController
+class Admin::AttendancesController < AdminController
 	before_action :set_event
 	before_action :redirect_to_root, if: :not_admin?, only: [:index]
 

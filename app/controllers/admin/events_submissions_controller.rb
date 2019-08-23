@@ -1,6 +1,4 @@
-class Admin::EventsSubmissionsController < ApplicationController
-	before_action :authenticate_user!
-  before_action :check_if_admin
+class Admin::EventsSubmissionsController < AdminController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -40,13 +38,5 @@ class Admin::EventsSubmissionsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
     params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location, :event_pic)
-  end
-
-  def redirect_to_root
-    redirect_to events_path
-  end
-
-  def check_if_admin
-    redirect_to_root if !current_user.is_admin
   end
 end

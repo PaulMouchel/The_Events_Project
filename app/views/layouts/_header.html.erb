@@ -30,13 +30,6 @@
               		</div>
             	<% end %>
           	</li>
-          	<% if current_user != nil %>
-            	<% if current_user.is_admin %>
-              		<li class="nav-item">
-                		<%= link_to "Dashboard Admin", admin_index_path, class: "nav-link" %>
-              		</li>
-            	<% end %>
-          	<% end %>
         </ul>
     </div>
 </nav>

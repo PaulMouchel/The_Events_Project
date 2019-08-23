@@ -1,0 +1,23 @@
+<% if current_user != nil %>
+    <% if current_user.is_admin %>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		    <%= link_to "Dashboard admin", events_path, class: "navbar-brand" %>
+		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		    	<span class="navbar-toggler-icon"></span>
+		    </button>
+		    <div class="collapse navbar-collapse" id="navbarResponsive">
+		        <ul class="navbar-nav mr-auto">
+		          	<li class="nav-item">
+		            	<%= link_to 'Users', admin_users_path, class: "nav-link" %>
+		          	</li>
+		          	<li class="nav-item">
+		            	<%= link_to 'Events', admin_events_path, class: "nav-link" %>
+		          	</li>
+		          	<li class="nav-item">
+		            	<%= link_to 'Events submissions', admin_events_submissions_path, class: "nav-link" %>
+		          	</li>
+		        </ul>
+		    </div>
+		</nav>
+    <% end %>
+<% end %>

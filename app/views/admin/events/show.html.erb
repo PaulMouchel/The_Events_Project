@@ -1,9 +1,12 @@
 
-  <div class="container">
+<div class="container mt-3">
+	<h1 class="text-center">Event n°<%= @event.id %></h1>
+	<%= render 'events/show_img', event: @event %>
+	<%= render 'events/show_desc', event: @event %>
     <%= link_to 'Retour', admin_events_path %>
 
 
-<h1>Event n°<%= @event.id %></h1>
+
 
 <p>
   <%if @event.event_pic.attached?%>
@@ -18,27 +21,6 @@
 
 <table class="table">
   <tbody>
-
-      <tr>
-        <th scope="row" class="table-info">location</th>
-        <td><i class="fas fa-map-marker-alt text-warning"></i><%= @event.location %></td>
-      </tr>
-      <tr>
-        <th scope="row" class="table-info">start_date</th>
-        <td><%= @event.convert_start_date %></td>
-      </tr>
-      <tr>
-        <th scope="row" class="table-info">duration</th>
-        <td><%= @event.duration %></td>
-      </tr>
-      <tr>
-        <th scope="row" class="table-info">price</th>
-        <td><%= @event.price %></td>
-      </tr>
-      <tr>
-        <th scope="row" class="table-info">description</th>
-        <td><%= @event.description %></td>
-      </tr>
       <tr>
         <th scope="row" class="table-info">admin</th>
         <td><%= link_to @event.admin.email, admin_user_path(@event.admin) %></td>

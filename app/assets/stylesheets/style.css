@@ -10574,3 +10574,22 @@ a.text-dark:hover, a.text-dark:focus {
     box-shadow: 0 0 30px;
 }
 
+html, body {
+  height: 100%;
+}
+
+#container {
+  min-height : 100%;
+}
+
+#main {
+  overflow : auto;
+  padding-bottom : 185px;
+}
+
+#footer {
+  position : relative;
+  height : 185px;
+  margin-top : -185px;
+  clear : both;
+}

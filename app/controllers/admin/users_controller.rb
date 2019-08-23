@@ -1,9 +1,5 @@
-class Admin::UsersController < ApplicationController
-	before_action :authenticate_user!
-	before_action :check_if_admin
+class Admin::UsersController < AdminController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
-
 
   #after_create :send_email
 
@@ -16,6 +12,7 @@ class Admin::UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+  	@is_admin = true
   end
 
   # GET /users/new
@@ -76,13 +73,5 @@ class Admin::UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:email, :encrypted_password, :description, :first_name, :last_name)
-    end
-
-    def redirect_to_root
-      redirect_to events_path
-    end
-
-    def check_if_admin
-      redirect_to_root if !current_user.is_admin
     end
 end
